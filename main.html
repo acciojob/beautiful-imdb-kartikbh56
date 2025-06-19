@@ -1,16 +1,135 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMDb: The Shawshank Redemption</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #0a1014; /* Dark background for a cinematic feel */
+            color: #e0e0e0; /* Light gray text */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh; /* Ensure it takes full viewport height */
+            position: relative; /* Needed for absolute positioning of movieDetail to work relative to body */
+            overflow: hidden; /* Hide any potential overflow from absolute positioning */
+        }
 
+        h1 {
+            color: #f5c518; /* IMDb yellow */
+            margin-bottom: 25px;
+            font-size: 2.5em;
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .movie-content-wrapper {
+            position: relative; /* This will be the positioning context for absolute children */
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Styling for the movie poster */
+        .moviePic {
+            height: 450px; /* Specified height */
+            width: 300px; /* Specified width */
+            opacity: 0.9; /* Specified opacity */
+            display: block; /* Ensures it behaves as a block element */
+            margin: 0 auto 30px auto; /* Centers the image and adds bottom margin */
+            border-radius: 10px; /* Rounded corners for aesthetics */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Stronger shadow for pop-out effect */
+            object-fit: cover; /* Ensures the image covers the area without distortion */
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+
+        .moviePic:hover {
+            transform: scale(1.03); /* Slight zoom on hover */
+            opacity: 1; /* Full opacity on hover */
+        }
+
+        /* Styling for the movie description */
+        .movieDetail {
+            position: absolute; /* Specified position */
+            top: 50%; /* Specified top position */
+            left: 50%; /* To help with centering via transform */
+            transform: translate(-50%, -50%); /* Centers the element both horizontally and vertically */
+            width: 90%; /* Specified width */
+            max-width: 600px; /* Max width to keep text readable */
+            text-align: center; /* Specified text alignment */
+            font-size: 1.1em; /* Specified font size */
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background */
+            padding: 20px 30px;
+            border-radius: 8px;
+            line-height: 1.8;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            z-index: 10; /* Ensure it stays above other elements if needed */
+            color: #f0f0f0; /* Light text for readability on dark background */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            .moviePic {
+                height: 350px;
+                width: 230px;
+                margin-bottom: 20px;
+            }
+            .movieDetail {
+                font-size: 0.95em;
+                padding: 15px 20px;
+                /* Adjust top/transform to avoid overlapping too much on smaller screens if content is short */
+                position: relative; /* Change to relative on small screens */
+                top: auto;
+                left: auto;
+                transform: none;
+                margin-top: 20px; /* Add margin when relative */
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            .moviePic {
+                height: 300px;
+                width: 200px;
+            }
+            .movieDetail {
+                font-size: 0.9em;
+                padding: 10px 15px;
+            }
+        }
+    </style>
+</head>
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+
+    <h1>The Shawshank Redemption</h1>
+
+    <div class="movie-content-wrapper">
+        <!-- Movie Poster -->
+        <img
+            src="https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg"
+            alt="The Shawshank Redemption Movie Poster"
+            class="moviePic"
+            onerror="this.onerror=null;this.src='https://placehold.co/300x450/34495e/ffffff?text=Poster+Unavailable';"
+        />
+
+        <!-- Movie Description -->
+        <p class="movieDetail">
+            Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency. A powerful tale of hope, friendship, and perseverance, adapted from Stephen King's novella "Rita Hayworth and the Shawshank Redemption."
+        </p>
+    </div>
 
 </body>
-
 </html>
